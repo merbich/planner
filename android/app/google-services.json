@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "458254148123",
+    "project_id": "planner-45629",
+    "storage_bucket": "planner-45629.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:458254148123:android:d25059c9aed099df624ebe",
+        "android_client_info": {
+          "package_name": "com.example.planner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKjv-j1FrvFfb3aGEDLTmY6V7R71LN33g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
