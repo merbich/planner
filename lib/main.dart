@@ -1,15 +1,20 @@
+//import 'dart:html';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:planner/consts/theme_data.dart';
+import 'package:planner/firebase_options.dart';
+import 'package:planner/login/auth_gate.dart';
 import 'package:planner/provider/dark_theme_provider.dart';
 import 'package:planner/screens/bottom_bar.dart';
 import 'package:planner/screens/home_screen.dart';
 //import 'package:planner/services/dark_theme_prefs.dart';
 import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
-void main() {
-  //WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -44,7 +49,7 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp(
             title: 'Flutter Demo',
             theme: Styles.themeData(themeProvider.getDarkTheme, context),
-            home: BottomBarScreen()
+            home: const AuthGate(),
           );
         }
       ),
