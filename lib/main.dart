@@ -1,16 +1,11 @@
 //import 'dart:html';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:planner/consts/theme_data.dart';
 import 'package:planner/firebase_options.dart';
-import 'package:planner/login/auth_gate.dart';
 import 'package:planner/provider/dark_theme_provider.dart';
-import 'package:planner/screens/bottom_bar.dart';
-import 'package:planner/screens/home_screen.dart';
-//import 'package:planner/services/dark_theme_prefs.dart';
 import 'package:provider/provider.dart';
-import 'package:get/get.dart';
+import 'package:planner/screens/welcome_screen/welcome_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,9 +42,10 @@ class _MyAppState extends State<MyApp> {
       child: Consumer<DarkThemeProvider>(
         builder: (context, themeProvider, child) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
             theme: Styles.themeData(themeProvider.getDarkTheme, context),
-            home: const AuthGate(),
+            home: WelcomeScreen(),
           );
         }
       ),
