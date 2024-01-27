@@ -3,8 +3,9 @@ import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:planner/screens/bottom_bar.dart';
 import 'package:firebase_ui_oauth_google/firebase_ui_oauth_google.dart';
+import 'package:planner/screens/welcome_screen/components/body.dart';
 
-import '../screens/home_screen.dart';
+import '../screens/home_screen/home_screen.dart';
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
@@ -20,7 +21,7 @@ class AuthGate extends StatelessWidget {
               EmailAuthProvider(),
               GoogleProvider(clientId : "458254148123-qffmfmten1jo8j41d1a0fdffboibicb4.apps.googleusercontent.com"),
            ],
-           headerBuilder: (context, constraints, shrinkOffset) {
+           /*headerBuilder: (context, constraints, shrinkOffset) {
              return Padding(
                padding: const EdgeInsets.all(20),
                child: AspectRatio(
@@ -54,7 +55,7 @@ class AuthGate extends StatelessWidget {
                 child: Image.asset('../../assets/cat.png'),
               ),
             );
-           },
+           },*/
          );
        }
 

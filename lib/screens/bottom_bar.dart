@@ -1,7 +1,7 @@
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:planner/screens/categories.dart';
-import 'package:planner/screens/home_screen.dart';
+import 'package:planner/screens/home_screen/home_screen.dart';
 import 'package:planner/screens/user.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
