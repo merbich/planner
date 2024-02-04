@@ -4,7 +4,7 @@ import 'package:planner/screens/sign_up_screen/sign_up_screen.dart';
 import 'package:planner/screens/welcome_screen/components/background.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:planner/screens/welcome_screen/components/rounded_button.dart';
-import 'package:planner/consts/log_in_constants.dart';
+import 'package:planner/consts/colors_constants.dart';
 
 class Body extends StatelessWidget {
   @override

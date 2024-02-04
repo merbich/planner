@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:planner/consts/log_in_constants.dart';
+import 'package:planner/consts/colors_constants.dart';
+import 'package:planner/screens/home_screen/home_screen.dart';
 import 'package:planner/screens/sign_in_screen/sign_in_screen.dart';
 import 'package:planner/screens/sign_up_screen/components/or_divider.dart';
 import 'package:planner/screens/welcome_screen/components/background.dart';
@@ -33,7 +34,11 @@ class _BodyState extends State<Body> {
         email: emailTextController.text,
         password: passwordTextController.text,
       );
-      if (context.mounted) Navigator.pop(context);
+      if (context.mounted) 
+      {
+        Navigator.pop(context);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+      }
       //Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
 
     } on FirebaseAuthException catch (e) {

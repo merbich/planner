@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:planner/consts/log_in_constants.dart';
+import 'package:planner/consts/colors_constants.dart';
+import 'package:planner/screens/drawer/drawer_file.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -15,10 +16,11 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const CustomDrawer(),
       backgroundColor: kPrimaryLightCorol,
       appBar: AppBar(
-        title: Text("P R O F I L E  P A G E"),
-        backgroundColor: kPrimaryColor,
+        title: Text("P R O F I L E  P A G E", textAlign: TextAlign.center,),
+        backgroundColor: kSecondaryColor,
       ),
       body: ListView(
         children: [

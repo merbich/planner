@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:planner/screens/home_screen/home_screen.dart';
 import 'package:planner/screens/sign_up_screen/sign_up_screen.dart';
 import 'package:planner/screens/welcome_screen/components/background.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,6 +10,8 @@ import 'package:planner/screens/welcome_screen/components/rounded_button.dart';
 import 'package:planner/screens/sign_in_screen/components/already_have_an_account.dart';
 
 class Body extends StatefulWidget {
+
+  const Body({super.key});
   @override
   State<Body> createState() => _BodyState();
 }
@@ -28,7 +31,11 @@ class _BodyState extends State<Body> {
         email: emailTextController.text,
         password: passwordTextController.text,
       );
-      if (context.mounted) Navigator.pop(context);
+      if (context.mounted) 
+      {
+        Navigator.pop(context);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+      }
 
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);

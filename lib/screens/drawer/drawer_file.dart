@@ -1,9 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:planner/consts/log_in_constants.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:planner/consts/colors_constants.dart';
 import 'package:planner/screens/home_screen/home_screen.dart';
 import 'package:planner/screens/profile_page/profile_page.dart';
+import 'package:planner/screens/sign_in_screen/sign_in_screen.dart';
+import 'package:planner/screens/welcome_screen/components/rounded_button.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
@@ -17,10 +20,12 @@ class _CustomDrawerState extends State<CustomDrawer> {
   {
     FirebaseAuth.instance.signOut();
     FirebaseUIAuth.signOut();
+    Navigator.push(context, MaterialPageRoute(builder: (context) => const SignInPage()));
   }
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Drawer(
       backgroundColor: kPrimaryLightCorol,
       child: Column(
@@ -28,8 +33,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
         children: [
           Column(
             children: [
-              const DrawerHeader(
-                child: Icon(Icons.task, color: kPrimaryColor, size: 64,),
+              DrawerHeader(
+                child: SvgPicture.asset(
+                "../../assets/icons/login.svg",
+                height: size.height * 0.4,
+              ),
               ),
               ListTile(
                 leading: Icon(Icons.task),
@@ -55,13 +63,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8.0, left: 60.0),
-            child: ListTile(
-              leading: Icon(Icons.logout),
-              title: Text("L O G O U T"),
-              onTap: signOut,
-            ),
+          Center(
+            child: RoundedButton(
+              press: signOut,
+              text: "L O G O U T",),
           ),
         ],
       ),
