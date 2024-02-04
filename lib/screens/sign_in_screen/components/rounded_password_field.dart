@@ -4,8 +4,10 @@ import 'package:planner/screens/sign_in_screen/components/text_field_container.d
 
 class RoundedPasswordField extends StatelessWidget {
     final ValueChanged<String> onChanged;
+    final TextEditingController controller;
   const RoundedPasswordField({
     required this.onChanged,
+    required this.controller,
     super.key,
   });
 
@@ -13,6 +15,7 @@ class RoundedPasswordField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFieldContainer(
       child: TextField(
+        controller: controller,
         obscureText: true,
         onChanged: onChanged,
         decoration: const InputDecoration(

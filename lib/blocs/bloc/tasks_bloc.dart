@@ -1,5 +1,3 @@
-//import 'dart:ffi';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:planner/blocs/bloc_exports.dart';
@@ -8,7 +6,7 @@ import 'package:planner/models/task.dart';
 part 'tasks_event.dart';
 part 'tasks_state.dart';
 
-class TasksBloc extends HydratedBloc<TasksEvent, TasksState> {
+class TasksBloc extends Bloc<TasksEvent, TasksState> {
   TasksBloc() : super(const TasksState()) {
       on<AddTask>(_onAddTask);
       on<UpdateTask>(_onUpdateTask);
