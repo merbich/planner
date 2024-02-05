@@ -39,6 +39,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 hintText: "Title",
                 onChanged: (value) {},
                 controller: taskTitleController,
+                icon: Icons.task,
               ),
               DropdownButton<String>(
                 value: selectedCategory,

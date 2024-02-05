@@ -1,57 +1,83 @@
 import 'package:equatable/equatable.dart';
+import 'package:planner/entities/task_entity.dart';
 
-class Task extends Equatable{
+class Task{
+  String taskId;
+  String description;
+  DateTime taskDeadline;
   final String title;
   bool? isDone;
-  bool? isDeleted;
+  bool? isDaily;
   Category category;
 
   Task({
+    required this.taskId,
     required this.title,
+    required this.description,
+    required this.taskDeadline,
     this.isDone,
-    this.isDeleted,
+    this.isDaily,
     required this.category,
   }){
     isDone = isDone ?? false;
-    isDeleted = isDeleted ?? false;
+    isDaily = isDaily ?? false;
   }
 
+  static final empty = Task(
+    taskId: '',
+    description: '',
+    taskDeadline: DateTime.now(),
+    title: '',
+    category: Category.dailyTask,
+  );
+
   Task copyWith({
+    String? taskId,
     String? title,
+    String? description,
+    DateTime? taskDeadline,
     bool? isDone,
-    bool? isDeleted,
+    bool? isDaily,
     Category? category,
   }) {
     return Task(
+     taskId: taskId ?? this.taskId,
      title: title ?? this.title,
+     description: description ?? this.description,
      category: category ?? this.category,
+     taskDeadline: taskDeadline ?? this.taskDeadline,
      isDone: isDone ?? this.isDone,
-     isDeleted: isDeleted ?? this.isDeleted,
+     isDaily: isDaily ?? this.isDaily,
      );
   }
-  Map<String, dynamic> toMap()
-  {
-    return {
-      'title': title,
-      'isDone': isDone,
-      'isDeleted': isDeleted,
-      'Category': Category,
-    };
-  }
 
-  factory Task.fromMap(Map<String, dynamic> map) {
-    return Task(
-      title: map['title'] ?? '',
-      isDone: map['isDone'],
-      isDeleted: map['isDeleted'],
-      category: map['Category'],
+  bool get isEmpty => this == Task.empty;
+  bool get isNotEmpty => this != Task.empty;
+
+  TaskEntity toEntity()
+  {
+    return TaskEntity(
+      taskId: taskId,
+      description: description,
+      taskDeadline: taskDeadline,
+      isDone : isDone,
+      isDaily : isDaily,
+      title : title,
+      category : category,
     );
   }
-  
-  @override
-  List<Object?> get props => [
-    title, isDone, isDeleted, category
-  ];
+  static Task fromEntity(TaskEntity entity)
+  {
+    return Task(
+      taskId: entity.taskId,
+      description: entity.description,
+      taskDeadline: entity.taskDeadline,
+      isDone : entity.isDone,
+      isDaily : entity.isDaily,
+      title : entity.title,
+      category : entity.category,
+    );
+  }
 }
 enum Category
 {
