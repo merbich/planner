@@ -1,10 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:planner/blocs/sign_up/bloc/sign_up_bloc.dart';
 import 'package:planner/consts/colors_constants.dart';
-import 'package:planner/packages/user_repository/lib/user_repository.dart';
-import 'package:planner/screens/home_screen/home_screen.dart';
 import 'package:planner/screens/sign_in_screen/sign_in_screen.dart';
 import 'package:planner/screens/sign_up_screen/components/or_divider.dart';
 import 'package:planner/screens/welcome_screen/components/background.dart';
@@ -13,6 +10,7 @@ import 'package:planner/screens/sign_in_screen/components/rounded_input_field.da
 import 'package:planner/screens/sign_in_screen/components/rounded_password_field.dart';
 import 'package:planner/screens/welcome_screen/components/rounded_button.dart';
 import 'package:planner/screens/sign_in_screen/components/already_have_an_account.dart';
+import 'package:planner/user_repository/lib/user_repository.dart';
 
 class Body extends StatefulWidget {
   const Body({super.key});
@@ -58,7 +56,7 @@ class _BodyState extends State<Body> {
                 ),
                 SvgPicture.asset(
                   "../../assets/icons/signup.svg",
-                  height: size.height * 0.4,
+                  height: size.height * 0.3,
                 ),
                 SizedBox(
                   height: size.height * 0.03,
@@ -88,7 +86,7 @@ class _BodyState extends State<Body> {
                     return null;
                   },
                   onChanged: (val) {
-                    if (val!.contains(RegExp(r'[A-Z]'))) {
+                    if (val.contains(RegExp(r'[A-Z]'))) {
                       setState(() {
                         containsUpperCase = true;
                       });

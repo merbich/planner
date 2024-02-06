@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:planner/blocs/authentication/authentication_bloc.dart';
+import 'package:planner/blocs/sign_in/bloc/sign_in_bloc.dart';
 import 'package:planner/screens/sign_in_screen/sign_in_screen.dart';
 import 'package:planner/screens/sign_up_screen/sign_up_screen.dart';
 import 'package:planner/screens/welcome_screen/components/background.dart';
@@ -6,7 +8,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:planner/screens/welcome_screen/components/rounded_button.dart';
 import 'package:planner/consts/colors_constants.dart';
 
+import '../../../blocs/bloc_exports.dart';
+
 class Body extends StatelessWidget {
+  const Body({super.key});
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -35,17 +41,18 @@ class Body extends StatelessWidget {
                 textColor: Colors.black,
                 press: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return SignInPage();
+                    return const SignInPage();
                   }));
                 },
               ),
+            
               RoundedButton(
                 text: "SIGN UP",
                 textColor: Colors.black,
                 color: kPrimaryLightCorol,
                 press: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return SignUpScreen();
+                    return const SignUpScreen();
                   }));
                 },
               ),

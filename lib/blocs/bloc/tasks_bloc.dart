@@ -43,7 +43,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     emit(TasksState(allTasks: List.from(state.allTasks)..remove(task)));
   }
   
-  @override
+  /*@override
   TasksState? fromJson(Map<String, dynamic> json) {
     return TasksState.fromMap(json);
   }
@@ -51,5 +51,5 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
   @override
   Map<String, dynamic>? toJson(TasksState state) {
     return state.toMap();
-  }
+  }*/
 }

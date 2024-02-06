@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:planner/packages/user_repository/lib/user_repository.dart';
+import 'package:planner/user_repository/lib/user_repository.dart';
 
 part 'my_user_event.dart';
 part 'my_user_state.dart';

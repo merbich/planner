@@ -63,13 +63,13 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       child: const Text('Cancel')),
                   ElevatedButton(
                       onPressed: () {
-                        var task = Task(
+                        /*var task = Task(
                           title: taskTitleController.text,
                           category: Category.values.firstWhere((e) => e.toString() == 'Category.$selectedCategory'),
                         );
                         context.read<TasksBloc>().add(AddTask(task: task));
                         Navigator.pop(context);
-                      },
+                      */},
                       child: const Text('Add'),
                       ),
                 ],

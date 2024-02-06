@@ -9,7 +9,7 @@ class TasksState extends Equatable {
   @override
   List<Object> get props => [allTasks];
 
-  Map<String, dynamic> toMap() {
+  /*Map<String, dynamic> toMap() {
     return {
       'allTasks': allTasks.map((e) => e.toMap()).toList(),
     };
@@ -19,7 +19,7 @@ class TasksState extends Equatable {
     return TasksState(
       allTasks: List<Task>.from(map['allTasks']?.map((e) => Task.fromMap(e))),
     );
-  }
+  }*/
 
 }
 

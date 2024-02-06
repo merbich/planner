@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:planner/packages/user_repository/lib/user_repository.dart';
+import 'package:planner/user_repository/lib/user_repository.dart';
 
 part 'sign_up_event.dart';
 part 'sign_up_state.dart';

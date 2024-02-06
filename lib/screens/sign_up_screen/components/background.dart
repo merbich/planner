@@ -29,7 +29,7 @@ class Background extends StatelessWidget {
             ),
             Positioned.fill(
               child: Align(
-                alignment: Alignment.bottomLeft,
+                alignment: Alignment.bottomRight,
                 child: Image.asset(
                   "../../assets/images/login_bottom.png",
                   //width: size.width * 0.5,

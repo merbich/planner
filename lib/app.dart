@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:planner/app_view.dart';
 import 'package:planner/blocs/authentication/authentication_bloc.dart';
 import 'package:planner/blocs/bloc_exports.dart';
-import 'package:planner/packages/user_repository/lib/user_repository.dart';
+import 'package:planner/user_repository/lib/user_repository.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp(this.userRepository, {super.key});
