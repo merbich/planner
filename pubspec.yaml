@@ -28,6 +28,8 @@ dependencies:
   foundation: ^0.0.5
   go_router: ^13.1.0
   cloud_firestore: ^4.15.3
+  uuid: ^4.3.3
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_lints: ^3.0.1

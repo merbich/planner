@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:planner/blocs/bloc_exports.dart';
 import 'package:planner/blocs/create_task/bloc/create_task_bloc.dart';
+import 'package:planner/blocs/edit_task/bloc/edit_task_bloc_bloc.dart';
 import 'package:planner/consts/colors_constants.dart';
 import 'package:planner/screens/sign_in_screen/components/background.dart';
 import 'package:planner/screens/sign_in_screen/components/rounded_input_field.dart';
@@ -12,19 +13,19 @@ import 'package:planner/task_repository/lib/task_repository.dart';
 import 'package:planner/user_repository/lib/user_repository.dart';
 import 'package:planner/task_repository/lib/src/models/Task.dart';
 
-class AddTaskScreen extends StatefulWidget {
-  final MyUser myUser;
-  AddTaskScreen(
-    this.myUser, {
+class EditTaskScreen extends StatefulWidget {
+  final Task task;
+  EditTaskScreen(
+    this.task, {
     Key? key,
   }) : super(key: key);
 
   @override
-  State<AddTaskScreen> createState() => _AddTaskScreenState();
+  State<EditTaskScreen> createState() => _EditTaskScreenState();
 }
 
-class _AddTaskScreenState extends State<AddTaskScreen> {
-  late Task task;
+class _EditTaskScreenState extends State<EditTaskScreen> {
+  late Task updatedTask;
   final taskTitleController = TextEditingController();
   final taskDescriptionController = TextEditingController();
   String selectedCategory = 'daily task';
@@ -39,21 +40,13 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
 
   @override
   void initState() {
-    task = Task.empty;
-    task.myUser = widget.myUser;
+    updatedTask = Task.empty;
+    taskTitleController.text = widget.task.title;
+    taskDescriptionController.text = widget.task.description;
+    selectedCategory = widget.task.category;
+    selectedDate = widget.task.taskDeadline;
     super.initState();
   }
-
-  /*String stringToTaskCategory(String value) {
-    switch(value) {
-      case 'daily task': return 'dailyTask';
-      case 'lecture': return 'lec';
-      case 'event' : return Category.event;
-      case 'study task': return Category.studyTask;
-      case 'daily habit': return Category.dailyHabit;
-    }
-    return Category.dailyTask;
-  }*/
 
   Future<void> selectDateFunc(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -72,9 +65,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   @override
   Widget build(BuildContext context) {
     //Size size = MediaQuery.of(context).size;
-    return BlocListener<CreateTaskBloc, CreateTaskState>(
+    return BlocListener<EditTaskBloc, EditTaskState>(
       listener: (context, state) {
-        if(state is CreateTaskSuccess) {
+        if(state is EditTaskSuccess) {
           Navigator.pop(context);
         }
       },
@@ -135,20 +128,19 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     onPressed: () {
                       if (taskTitleController.text != '') {
                         setState(() {
-                          task.title = taskTitleController.text;
-                          task.description = taskDescriptionController.text;
-                          task.taskDeadline = selectedDate;
-                          task.category = selectedCategory;
-                          task.isDone = false;
-                          task.category == 'daily habit'
-                              ? task.isDaily = true
-                              : task.isDaily = false;
+                          updatedTask.taskId = widget.task.taskId;
+                          updatedTask.title = taskTitleController.text;
+                          updatedTask.description = taskDescriptionController.text;
+                          updatedTask.taskDeadline = selectedDate;
+                          updatedTask.category = selectedCategory;
+                          updatedTask.isDone = widget.task.isDone;
+                          updatedTask.isDaily = widget.task.isDaily;
                         });
-                        log(task.toString());
-                        context.read<CreateTaskBloc>().add(CreateTask(task));
+                        log(updatedTask.toString());
+                        context.read<EditTaskBloc>().add(EditTask(updatedTask));
                       }
                     },
-                    child: const Text('Add'),
+                    child: const Text('Save'),
                   ),
                 ],
               ),

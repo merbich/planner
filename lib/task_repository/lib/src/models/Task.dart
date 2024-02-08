@@ -1,14 +1,16 @@
-import 'package:equatable/equatable.dart';
-import 'package:planner/entities/task_entity.dart';
+import 'package:planner/user_repository/lib/user_repository.dart';
+
+import '../../task_repository.dart';
 
 class Task{
   String taskId;
   String description;
   DateTime taskDeadline;
-  final String title;
+  String title;
   bool? isDone;
   bool? isDaily;
-  Category category;
+  String category;
+  MyUser myUser;
 
   Task({
     required this.taskId,
@@ -17,6 +19,7 @@ class Task{
     required this.taskDeadline,
     this.isDone,
     this.isDaily,
+    required this.myUser,
     required this.category,
   }){
     isDone = isDone ?? false;
@@ -28,7 +31,8 @@ class Task{
     description: '',
     taskDeadline: DateTime.now(),
     title: '',
-    category: Category.dailyTask,
+    category: '',
+    myUser: MyUser.empty,
   );
 
   Task copyWith({
@@ -38,7 +42,8 @@ class Task{
     DateTime? taskDeadline,
     bool? isDone,
     bool? isDaily,
-    Category? category,
+    String? category,
+    MyUser? myUser,
   }) {
     return Task(
      taskId: taskId ?? this.taskId,
@@ -48,6 +53,7 @@ class Task{
      taskDeadline: taskDeadline ?? this.taskDeadline,
      isDone: isDone ?? this.isDone,
      isDaily: isDaily ?? this.isDaily,
+     myUser: myUser ?? this.myUser,
      );
   }
 
@@ -64,6 +70,7 @@ class Task{
       isDaily : isDaily,
       title : title,
       category : category,
+      myUser: myUser,
     );
   }
   static Task fromEntity(TaskEntity entity)
@@ -76,14 +83,7 @@ class Task{
       isDaily : entity.isDaily,
       title : entity.title,
       category : entity.category,
+      myUser: entity.myUser,
     );
   }
-}
-enum Category
-{
-  dailyHabit,
-  lecture,
-  event,
-  dailyTask,
-  studyTask
 }

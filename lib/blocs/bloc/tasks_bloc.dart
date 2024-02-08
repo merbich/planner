@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:planner/blocs/bloc_exports.dart';
-import 'package:planner/models/task.dart';
+import 'package:planner/task_repository/lib/task_repository.dart';
 
 part 'tasks_event.dart';
 part 'tasks_state.dart';

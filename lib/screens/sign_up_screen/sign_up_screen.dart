@@ -14,7 +14,6 @@ import 'package:planner/screens/sign_up_screen/components/or_divider.dart';
 import 'package:planner/screens/welcome_screen/components/rounded_button.dart';
 import 'package:planner/user_repository/lib/user_repository.dart';
 import 'package:provider/provider.dart';
-
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 

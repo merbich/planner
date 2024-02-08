@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:planner/blocs/authentication/authentication_bloc.dart';
 import 'package:planner/blocs/bloc_exports.dart';
 import 'package:planner/blocs/sign_in/bloc/sign_in_bloc.dart';
+import 'package:planner/screens/home_screen/home_screen.dart';
 import 'package:planner/screens/sign_in_screen/components/already_have_an_account.dart';
 import 'package:planner/screens/sign_in_screen/components/background.dart';
 import 'package:planner/screens/sign_in_screen/components/rounded_input_field.dart';
@@ -32,12 +33,11 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Provider<SignInBloc>(
-      create: (context) => SignInBloc(
-          userRepository: context.read<AuthenticationBloc>().userRepository),
-      builder: (context, child) {
-        return Body(size, context);
-      }
-    );
+        create: (context) => SignInBloc(
+            userRepository: context.read<AuthenticationBloc>().userRepository),
+        builder: (context, child) {
+          return Body(size, context);
+        });
   }
 
   Scaffold Body(Size size, BuildContext context) {
@@ -47,6 +47,10 @@ class _SignInPageState extends State<SignInPage> {
           if (state is SignInSuccess) {
             setState(() {
               signInRequired = false;
+            });
+          } else if (state is SignInProcess) {
+            setState(() {
+              signInRequired = true;
             });
           } else if (state is SignInFailure) {
             setState(() {
@@ -64,8 +68,8 @@ class _SignInPageState extends State<SignInPage> {
                   children: <Widget>[
                     const Text(
                       "SIGN IN",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 20),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                     SizedBox(
                       height: size.height * 0.03,
