@@ -1,16 +1,18 @@
-# planner
+# Planer Studencki
 
-A new Flutter project.
+Planer Studencki to aplikacja stworzona w technologii Flutter, która pomaga studentom w organizacji ich codziennych zadań i obowiązków.
 
-## Getting Started
+## Funkcje
 
-This project is a starting point for a Flutter application.
+- **Dodawanie zadań:** Użytkownicy mogą dodawać nowe zadania, przypisywać im datę (deadline), opis oraz kategorię.
+- **Przeglądanie zadań:** Planer umożliwia przeglądanie zaplanowanych zadań w formie listy lub kalendarza miesięcznego.
+- **Edycja zadań:** Użytkownicy mają możliwość edycji istniejących zadań.
+- **Kategorie dla zadań:** Zadania posiadają kategorię, np. sprawy codzienne, zajęcia na uczelni, spotkania itp.
 
-A few resources to get you started if this is your first Flutter project:
+## Technologie
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Firebase:** baza danych
+- **GoogleAuthenticator**
+- **BLoC Pattern**
+- **Form validation:** dla sprawdzenia poprawności haseł, poczty.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
